@@ -6,7 +6,7 @@
 <body>
 	<?php
 	// Stap 1 
-	echo "<h1>hello world hoi!</h1>";
+	echo "<h1>hello world!</h1>";
 
 	// Stap 2
 	define("GREETING", "hello world!");
