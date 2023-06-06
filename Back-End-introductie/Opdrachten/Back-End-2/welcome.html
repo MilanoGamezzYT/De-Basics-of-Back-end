@@ -7,15 +7,15 @@
 <body>
   <div class="container">
     <h2>Welkom!</h2>
-    <form>
+    <form action="welcome.php" method="GET">
       <label for="naam">Naam:</label>
-      <input type="text" id="naam" name="naam" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <input type="submit" value="Verstuur">
-    </form>
+      <input type="text" name="naam" id="naam" required>
+      <br>
+      <label for="email">Emailadres:</label>
+      <input type="email" name="email" id="email" required>
+      <br>
+      <input type="submit" value="Verzenden">
+  </form>
   </div>
 </body>
 </html>
