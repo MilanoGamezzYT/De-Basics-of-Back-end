@@ -2,10 +2,18 @@
 <html>
 <head>
     <title>Welcome</title>
+    <head>
+  <title>Welkom!</title>
 </head>
 <body>
-    <h1>De ingevulde gegevens zijn:</h1>
-    <p>Naam: <?php echo $_GET['naam']; ?></p>
-    <p>E-mailadres: <?php echo $_GET['email']; ?></p>
-</body>
+  <div class="container">
+    <h2>Welkom!</h2>
+    <?php
+      $naam = isset($_GET['naam']) ? htmlspecialchars($_GET['naam']) : '';
+      $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
+
+      echo "<p>Naam: $naam</p>";
+      echo "<p>E-mailadres: $email</p>";
+    ?>
+  </div>
 </html>
