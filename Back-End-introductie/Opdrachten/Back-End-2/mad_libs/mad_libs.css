@@ -1,0 +1,36 @@
+.background{
+    background-color: grey;
+}
+
+.tekst {
+    background-color: white;
+    width: 650px;
+    padding: 50px;
+    margin: 20px;
+    margin-left: 250px;
+}
+#big{
+    font-size: 20px;
+}
+h1{
+    margin-left: 250px;
+    font-family: impact;
+    color: white;
+    font-size: 60px;
+    
+}
+ul {
+    list-style-type: none;
+    margin-left: 250px;
+    margin-right: 520px;
+    padding: 0;
+    overflow: hidden;
+    background-color: red;
+}
+
+
+footer {
+    text-align: center;
+    padding: 3px;
+    color: white;
+}
