@@ -7,7 +7,7 @@
             background-size: cover;
             text-align: center;
             font-size: 30px;
-            color: white;
+            color: black;
             padding-top: 200px;
             font-family: 'Lucida Handwriting';
         }

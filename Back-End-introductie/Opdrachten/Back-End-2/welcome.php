@@ -17,8 +17,13 @@
       <input type="submit" value="Verzenden">
     </form>
   </div>
-<php>
+<?php
+  $naam = isset($_GET['naam']) ? htmlspecialchars($_GET['naam']) : '';
+      $email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
 
-</php>
+      echo "<p>Naam: $naam</p>";
+      echo "<p>E-mailadres: $email</p>";
+?>
 </body>
 </html>
+
