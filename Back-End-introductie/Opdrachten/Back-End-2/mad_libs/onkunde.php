@@ -18,40 +18,40 @@
             if (empty($_POST["p1"])) {
                 $p1fout = "antwoord is verplicht!";
             } else {
-                $p1 = test_input($_POST["p1"]);
+                $p1 = antwoord($_POST["p1"]);
             }
             if (empty($_POST["p2"])) {
                 $p2fout = "antwoord is verplicht!";
             } else {
-                $p2 = test_input($_POST["p2"]);
+                $p2 = antwoord($_POST["p2"]);
             }
             if (empty($_POST["p3"])) {
                 $p3fout = "antwoord is verplicht!";
             } else {
-                $p3 = test_input($_POST["p3"]);
+                $p3 = antwoord($_POST["p3"]);
             }
             if (empty($_POST["p4"])) {
                 $p4fout = "antwoord is verplicht!";
             } else {
-                $p4 = test_input($_POST["p4"]);
+                $p4 = antwoord($_POST["p4"]);
             }
             if (empty($_POST["p5"])) {
                 $p5fout = "antwoord is verplicht!";
             } else {
-                $p5 = test_input($_POST["p5"]);
+                $p5 = antwoord($_POST["p5"]);
             }
             if (empty($_POST["p6"])) {
                 $p6fout = "antwoord is verplicht!";
             } else {
-                $p6 = test_input($_POST["p6"]);
+                $p6 = antwoord($_POST["p6"]);
             }
             if (empty($_POST["p7"])) {
                 $p7fout = "antwoord is verplicht!";
             } else {
-                $p7 = test_input($_POST["p7"]);
+                $p7 = antwoord($_POST["p7"]);
             }
         }
-            function test_input($data) {
+            function antwoord($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);

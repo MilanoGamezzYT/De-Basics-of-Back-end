@@ -72,7 +72,7 @@
             In welke land zou je graag willen wonen? <input type="text" name="p3">
             <span>* <?php echo $p3fout;?></span>
             <br><br>
-            Wat doe je als je je verveelt?: <input type="text" name="p4">
+            Wat doe je als je je verveelt? <input type="text" name="p4">
             <span>* <?php echo $p4fout;?></span>
             <br><br>
             Met welke speelgoed speelde je als kind het meest? <input type="text" name="p5">
