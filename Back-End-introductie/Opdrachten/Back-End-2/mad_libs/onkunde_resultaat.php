@@ -19,5 +19,5 @@
     Dit heeft niet te maken met gebrek aan <?php echo $_POST["p5"]; ?>, maar met een te veel aan 
     <?php echo $_POST["p6"]; ?>. Te veel <?php echo $_POST["p6"]; ?> leidt tot <?php echo $_POST["p7"]; ?> en dat is niet goed als je wilt 
     <?php echo $_POST["p1"]; ?>. Helaas voor <?php echo $_POST["p2"]; ?>.
-    <footer>© Milan Sebes - 2023</footer>
+    <footer>© Milan Sebes - 2024</footer>
 </head>

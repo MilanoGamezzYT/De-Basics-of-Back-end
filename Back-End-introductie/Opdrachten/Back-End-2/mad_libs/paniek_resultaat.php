@@ -26,5 +26,5 @@
     "<?php echo $_POST["p2"]; ?>, je hebt helemaal gelijk! Wat zou ik doen als ik jou niet had." <br><br>
     "Mij vervelen, Sire."
     </p>
-    <footer>© Milan Sebes - 2023</footer>
+    <footer>© Milan Sebes - 2024</footer>
 </head>

@@ -89,5 +89,5 @@
             <br><br>   
             <input type="submit" name="submit" value="Versturen"> 
             </form>
-            <footer>© Milan Sebes - 2023</footer>
+            <footer>© Milan Sebes - 2024</footer>
 </body>
