@@ -1,0 +1,42 @@
+/* Algemene body-stijlen */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container voor de pagina */
+.container {
+    width: 60%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titel stijlen */
+h1 {
+    text-align: center;
+}
+
+/* Stijlen voor het gegevensgedeelte */
+#gegevens {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Stijlen voor elke persoon */
+.persoon {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Scheidingslijn tussen personen */
+hr {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}

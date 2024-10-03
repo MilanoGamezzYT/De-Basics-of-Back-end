@@ -9,30 +9,30 @@ $fields = array(
     "p4" => "Wat heb je altijd bij je als je op vakantie gaat? ",
     "p5" => "Wat is je beste persoonlijke eigenschap? ",
     "p6" => "Wat is je slechtste persoonlijke eigenschap?",
-    "p7" => "Wat is het ergste wat je kan overkomen?",
+    "p7" => "Wat is het ergste wat je kan overkomen? "
 );
 
 // Als de server request post is, dan is het valid
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //
     $allValid = true;
+
     // De fields worden omgezet naar Key en naar een waarde
     foreach ($fields as $key => $value) { 
-        // Als het invulveld leeg is, dan moet hij een fout aangeven
+        // Controleer of het invoerveld leeg is
         if (empty($_POST[$key])) {
-            ${$key . "fout"} = "antwoord is verplicht!";
-            // allValid is false als het veld niet is ingevuld
-            $allValid = false;
+            ${$key . "fout"} = "Antwoord is verplicht!"; // Toon foutmelding als het veld leeg is
+            $allValid = false; // allValid is false als het veld niet is ingevuld
         } else {
-            // 
+            // Verwerk de invoer om ongewenste karakters te verwijderen
             ${$key} = test_input($_POST[$key]);
         }
     }
 }
 
+// Functie om de invoer te filteren
 function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
+    $data = trim($data); // Verwijder spaties aan het begin en einde
+    $data = stripslashes($data); // Verwijder backslashes
     $data = htmlspecialchars($data);
     return $data;
 }
@@ -52,19 +52,19 @@ function test_input($data) {
         <li><a href="onkunde.php">Onkunde</a></li>
     </ul>
     
-    <?php if ($_SERVER["REQUEST_METHOD"] == "GET" || $allValid == false){?>
+    <!-- Formulier weergeven als de pagina wordt geladen of als de validatie mislukt -->
+    <?php if ($_SERVER["REQUEST_METHOD"] == "GET" || $allValid == false) { ?>
     <form class="tekst" method="post" action="onkunde.php">
         <?php foreach ($fields as $key => $value): ?>
             <label for="<?php echo $key; ?>"><?php echo $value; ?></label>
             <input type="text" name="<?php echo $key; ?>" value="<?php echo ${$key}; ?>" required>
-            <span>* <?php echo ${$key . "fout"}; ?></span>
+            <span class="error"><?php echo ${$key . "fout"}; ?></span>
             <br><br>
         <?php endforeach; ?>
         <input type="submit" name="submit" value="Versturen"> 
     </form>
-    <?php }
-    else{ 
-    ?>
+    <?php } else { ?>
+    <!-- Toon het verhaal als alle invoer geldig is -->
     Er zijn veel mensen die niet kunnen <?php echo $_POST["p1"]; ?>.
     Mensen zoals <?php echo $_POST["p2"]; ?>.
     zelfs met de hulp van een <?php echo $_POST["p4"]; ?> of zelfs 

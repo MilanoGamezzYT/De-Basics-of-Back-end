@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamepicker</title>
+    <link rel="stylesheet" href="gamepicker.css">
+</head>
+<body>
+    <h1>Gamepicker</h1>
+
+    <!-- Filters -->
+    <div id="filters">
+        <label for="max-price">Max Prijs:</label>
+        <input type="number" id="max-price" placeholder="30">
+
+        <label for="genre-filter">Genre:</label>
+        <select id="genre-filter">
+            <option value="">Alle Genres</option>
+            <option value="FPS">FPS</option>
+            <option value="MOBA">MOBA</option>
+            <option value="Action">Action</option>
+            <option value="RPG">RPG</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Sport">Sport</option>
+            <option value="Sandbox">Sandbox</option>
+            <option value="Looter-shooter">Looter-shooter</option>
+        </select>
+
+        <label for="max-rating">Max Rating:</label>
+        <input type="number" id="max-rating" placeholder="4" min="0" max="5">
+
+        <button id="apply-filters">Toepassen</button>
+        <button id="show-cart">Winkelmandje</button>
+        <button id="calculate-price">Bereken prijs</button>
+    </div>
+
+    <!-- Game overzicht -->
+    <div id="game-overview"></div>
+
+    <!-- Winkelmandje -->
+    <div id="shopping-cart" style="display: none;">
+        <h2>Winkelmandje</h2>
+        <div id="cart-items"></div>
+        <p id="total-price">Totaalprijs: €0</p>
+        <button id="clear-cart">Leeg Winkelmandje</button>
+    </div>
+
+    <script src="gamepicker.js"></script>
+</body>
+</html>
