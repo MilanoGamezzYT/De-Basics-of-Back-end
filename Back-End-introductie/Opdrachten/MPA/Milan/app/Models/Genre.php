@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
-    use HasFactory;
-
     protected $fillable = ['name'];
 
-    protected $table = 'genres';
+    public function songs()
+    {
+        return $this->hasMany(Song::class);
+    }
 }
+

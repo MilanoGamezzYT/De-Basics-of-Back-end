@@ -12,7 +12,9 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        // Haal alle genres op en stuur ze naar de genres.index view
+        $genres = Genre::all();
+        return view('genres.index', compact('genres'));
     }
 
     /**
@@ -20,17 +22,29 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view(view:"genres.create");
-    }
+        // Toon de form om een nieuw genre aan te maken
+        return view('genres.create');
+    }   
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        // Valideer het verzoek voor het opslaan van een nieuw genre
         $validated = $request->validate([
-            "genreName" => "unique:genres,name|required|min:2" 
+            'name' => 'required|unique:genres,name|min:2',
+            'description' => 'nullable|string'
         ]);
+
+        // Sla het nieuwe genre op
+        Genre::create([
+            'name' => $validated['name'],
+            'description' => $request->input('description') ?? null
+        ]);
+
+        // Redirect naar de genres index-pagina met een succesbericht
+        return redirect()->route('genres.index')->with('success', 'Genre successfully created!');
     }
 
     /**
@@ -38,7 +52,8 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //
+        // Toon de details van een specifiek genre
+        return view('genres.show', compact('genre'));
     }
 
     /**
@@ -46,7 +61,8 @@ class GenreController extends Controller
      */
     public function edit(Genre $genre)
     {
-        //
+        // Toon de form om een bestaand genre te bewerken
+        return view('genres.edit', compact('genre'));
     }
 
     /**
@@ -54,7 +70,17 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
-        //
+        // Valideer de input bij het updaten van een genre
+        $validated = $request->validate([
+            'name' => 'required|unique:genres,name,' . $genre->id . '|min:2',
+            'description' => 'nullable|string'
+        ]);
+
+        // Update het genre met de gevalideerde data
+        $genre->update($validated);
+
+        // Redirect naar de genres index-pagina met een succesbericht
+        return redirect()->route('genres.index')->with('success', 'Genre updated successfully!');
     }
 
     /**
@@ -62,6 +88,14 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        // Verwijder het opgegeven genre
+        $genre->delete();
+
+        // Redirect naar de genres index-pagina met een succesbericht
+        return redirect()->route('genres.index')->with('success', 'Genre deleted successfully!');
+    }
+    public function songs(Songs $songs)
+    {
+        return view('songs', add('songs'));
     }
 }

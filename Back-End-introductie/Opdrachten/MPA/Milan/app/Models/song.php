@@ -1,16 +1,19 @@
 <?php
 
-// app/Models/Song.php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    use HasFactory;
+    public function Playlist(){
+        return $this->belongsToMany(Playlist::Class);
+    }
 
-    protected $fillable = ['title', 'artist', 'genre_id'];
+    protected $fillable = ['title', 'artist', 'duration', 'genre_id'];
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
 }
-

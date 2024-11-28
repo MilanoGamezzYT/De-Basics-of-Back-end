@@ -2,14 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Playlist extends Model
 {
-    use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',       // Zorg ervoor dat dit overeenkomt met je databasekolom
+    ];
 
-    public function song(){
-        return $this->belongsToMany(song::class);
+    /**
+     * The songs that belong to the playlist.
+     */
+    public function songs()
+    {
+        return $this->belongsToMany(Song::class);
     }
 }

@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('saved_list_songs', function (Blueprint $table) {
+        Schema::create('register', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('saved_list_id')->constrained();
-            $table->foreignId('song_id')->constrained();
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('saved_list_songs');
+        Schema::dropIfExists('register');
     }
 };

@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class SavedList extends Model
 {
-    use HasFactory;
+    protected $fillable = ['name', 'user_id'];
+
+    public function songs()
+    {
+        return $this->belongsToMany(Song::class, 'saved_list_songs');
+    }
 }
+
