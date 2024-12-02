@@ -23,10 +23,11 @@ class SongController extends Controller
      */
     public function create()
     {
-        // Haal alle genres op voor gebruik in de create view
-        $genres = Genre::all(); 
-        return view('songs.create', compact('genres'));
+        // Toon de form voor het aanmaken van een nieuwe song
+        return view('songs.create');
     }
+
+    
 
     /**
      * Store a newly created resource in storage.

@@ -20,7 +20,7 @@ Route::get("/genre/create", [GenreController::class, "create"])->name('genres.cr
 Route::post("/genre/store", [GenreController::class, "store"])->name('genres.store');
 
 // Song routes
-Route::get('/songs', [SongController::class, 'index']);
+Route::get('/songs', [SongController::class, 'index'])->name('songs.index');
 Route::get('/songs/create', [SongController::class, 'create'])->name('songs.create');
 Route::post('/songs', [SongController::class, 'store'])->name('songs.store');
 Route::get('/songs/{id}', [SongController::class, 'show'])->name('songs.show');

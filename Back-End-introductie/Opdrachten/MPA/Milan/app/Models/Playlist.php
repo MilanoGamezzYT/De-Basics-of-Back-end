@@ -12,7 +12,7 @@ class Playlist extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',       // Zorg ervoor dat dit overeenkomt met je databasekolom
+        'name', 
     ];
 
     /**
