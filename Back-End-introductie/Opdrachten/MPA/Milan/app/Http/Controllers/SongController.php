@@ -23,11 +23,10 @@ class SongController extends Controller
      */
     public function create()
     {
-        // Toon de form voor het aanmaken van een nieuwe song
-        return view('songs.create');
+        // Haal alle genres op voor gebruik in de create view
+        $genres = Genre::all(); 
+        return view('songs.create', compact('genres'));
     }
-
-    
 
     /**
      * Store a newly created resource in storage.
@@ -36,13 +35,21 @@ class SongController extends Controller
     {
         // Valideer de gegevens van het nieuwe liedje
         $validated = $request->validate([
-            'title' => 'required|string|min:2|max:255',
+            'name' => 'required|string|min:2|max:255',  // 'title' veld voor de titel van het lied
             'artist' => 'required|string|min:2|max:255',
+            'album' => 'nullable|string|max:255',  // Optioneel veld voor album
             'duration' => 'required|integer|min:1', // Duur in seconden
+            'genre_id' => 'required|exists:genres,id',  // Genre moet bestaan in de genres tabel
         ]);
 
         // Maak een nieuw liedje aan in de database
-        Song::create($validated);
+        Song::create([
+            'name' => $validated['name'],  // Gebruik de juiste veldnaam
+            'artist' => $validated['artist'],
+            'album' => $validated['album'] ?? null,  // Optioneel veld voor album
+            'duration' => $validated['duration'],  // Duur in seconden
+            'genre_id' => $validated['genre_id'],  // Genre-id
+        ]);
 
         // Redirect naar de indexpagina met een succesbericht
         return redirect()->route('songs.index')->with('success', 'Song successfully added!');
@@ -55,7 +62,13 @@ class SongController extends Controller
     {
         // Zoek het specifieke liedje op met zijn genre
         $song = Song::with('genre')->findOrFail($id);
-        return view('songs.show', compact('song'));
+
+        // Bereken de duur in minuten en seconden
+        $durationInMinutes = floor($song->duration / 60); // Minuten
+        $durationInSeconds = $song->duration % 60; // Resterende seconden
+
+        // Pass de berekende waarden naar de view
+        return view('songs.show', compact('song', 'durationInMinutes', 'durationInSeconds'));
     }
 
     /**
@@ -65,7 +78,11 @@ class SongController extends Controller
     {
         // Haal alle genres op voor de edit view
         $genres = Genre::all();
-        return view('songs.edit', compact('song', 'genres'));
+        // Bereken de duur in minuten en seconden voor de formuliervelden
+        $durationInMinutes = floor($song->duration / 60);
+        $durationInSeconds = $song->duration % 60;
+
+        return view('songs.edit', compact('song', 'genres', 'durationInMinutes', 'durationInSeconds'));
     }
 
     /**
@@ -75,13 +92,21 @@ class SongController extends Controller
     {
         // Valideer de gegevens voor het updaten van het liedje
         $validated = $request->validate([
-            'title' => 'required|string|min:2|max:255',
+            'name' => 'required|string|min:2|max:255',
             'artist' => 'required|string|min:2|max:255',
-            'duration' => 'required|integer|min:1',
+            'album' => 'nullable|string|max:255',  // Optioneel album
+            'duration' => 'required|integer|min:1',  // Duur in seconden
+            'genre_id' => 'required|exists:genres,id',  // Genre moet bestaan
         ]);
 
-        // Update het liedje met nieuwe gegevens
-        $song->update($validated);
+        // Werk het liedje bij met nieuwe gegevens
+        $song->update([
+            'name' => $validated['name'],
+            'artist' => $validated['artist'],
+            'album' => $validated['album'] ?? null,  // Optioneel album
+            'duration' => $validated['duration'],  // Duur in seconden
+            'genre_id' => $validated['genre_id'],  // Genre-id
+        ]);
 
         // Redirect naar de indexpagina met een succesbericht
         return redirect()->route('songs.index')->with('success', 'Song successfully updated!');

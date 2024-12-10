@@ -1,9 +1,11 @@
 @extends("layouts.master")
 
 @section("content")
-<h1>Dit zijn alle songs</h1>
+<h1>Dit zijn alle liedjes</h1>
 
 @foreach($songs as $song)
-    <p>{{ $song->title }} - {{ $song->artist }}</p>
+    <p>
+        <a href="{{ route('songs.show', $song->id) }}">{{ $song->name }}</a> - {{ $song->artist }}
+    </p>
 @endforeach
 @endsection

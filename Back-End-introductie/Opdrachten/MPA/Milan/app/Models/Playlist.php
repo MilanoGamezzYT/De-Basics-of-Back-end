@@ -19,7 +19,7 @@ class Playlist extends Model
      * The songs that belong to the playlist.
      */
     public function songs()
-    {
-        return $this->belongsToMany(Song::class);
-    }
+{
+    return $this->belongsToMany(Song::class);
+}
 }

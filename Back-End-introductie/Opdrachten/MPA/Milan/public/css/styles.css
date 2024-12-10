@@ -32,11 +32,39 @@ nav ul li a {
 }
 
 nav ul li a:hover {
+    color: #ffcc00;
+}
+
+nav ul li form button.logout-btn {
+    background-color: #007bff;
+    color: white; 
+    font-weight: bold;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li form button.logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
     color: #ffcc00; 
 }
 
 h1 {
     color: #007bff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #007bff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h3 {
+    color: black;
     text-align: center;
     margin-top: 20px;
 }
@@ -82,4 +110,35 @@ footer {
     text-align: center;
     padding: 10px 20px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form select, form button {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    color: #ffcc00;
 }

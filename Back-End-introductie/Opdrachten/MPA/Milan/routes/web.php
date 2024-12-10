@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\Welcome;
-use App\Http\Controllers\GenreController;
+use App\Http\Controllers\GenresController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -16,7 +16,7 @@ Route::get('/', function () {
 Route::get("/hello", [Welcome::class, "hello"]);
 
 // Genre routes
-Route::get("/genre/create", [GenreController::class, "create"])->name('genres.create');
+Route::get('/genres', [GenresController::class, 'index'])->name('genres.index');
 Route::post("/genre/store", [GenreController::class, "store"])->name('genres.store');
 
 // Song routes
@@ -27,9 +27,10 @@ Route::get('/songs/{id}', [SongController::class, 'show'])->name('songs.show');
 
 // Playlist routes
 Route::get('/playlists', [PlaylistController::class, 'index'])->name('playlists.index');
-Route::get('/playlists/create', [PlaylistController::class, 'create']);
+Route::get('/playlists/create', [PlaylistController::class, 'create'])->name('playlists.create');
 Route::post('/playlists', [PlaylistController::class, 'store'])->name('playlists.store');
-
+Route::get('/playlists/{id}', [PlaylistController::class, 'show'])->name('playlists.show');
+Route::post('/playlists/{playlist}/add-song', [PlaylistController::class, 'addSong'])->name('playlists.addSong');
 
 // Login Routes
 Route::get('/login', [LoginController::class, 'index'])->name('login');

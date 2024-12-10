@@ -6,12 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    public function Playlist(){
-        return $this->belongsToMany(Playlist::Class);
+    // Massale toewijzing van velden
+    protected $fillable = ['name', 'artist', 'duration', 'genre_id'];
+
+    /**
+     * Relatie met Playlist (many-to-many)
+     */
+    public function playlists()
+    {
+        return $this->belongsToMany(Playlist::class, 'playlist_song');
     }
 
-    protected $fillable = ['title', 'artist', 'duration', 'genre_id'];
-
+    /**
+     * Relatie met Genre (belongs to)
+     */
     public function genre()
     {
         return $this->belongsTo(Genre::class);

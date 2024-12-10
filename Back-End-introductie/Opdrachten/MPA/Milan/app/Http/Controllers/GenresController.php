@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
-class GenreController extends Controller
+class GenresController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // Haal alle genres op en stuur ze naar de genres.index view
-        $genres = Genre::all();
+        // Haal alle genres op
+        $genres = Genre::all(); 
+
+        // Return de view met de genres
         return view('genres.index', compact('genres'));
     }
 
@@ -94,8 +96,16 @@ class GenreController extends Controller
         // Redirect naar de genres index-pagina met een succesbericht
         return redirect()->route('genres.index')->with('success', 'Genre deleted successfully!');
     }
-    public function songs(Songs $songs)
+
+    /**
+     * Show songs related to a genre.
+     */
+    public function songs(Genre $genre)
     {
-        return view('songs', add('songs'));
+        // Haal de songs voor een bepaald genre (voorbeeld voor een relatie)
+        $songs = $genre->songs; // Je zou een relatie moeten hebben gedefinieerd in het Genre-model
+
+        // Return de view met de songs
+        return view('songs.index', compact('songs'));
     }
 }
