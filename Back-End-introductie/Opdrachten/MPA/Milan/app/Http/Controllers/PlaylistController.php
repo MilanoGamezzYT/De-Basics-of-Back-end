@@ -46,7 +46,7 @@ class PlaylistController extends Controller
         $playlist = Playlist::with('songs')->findOrFail($id);
 
         // Bereken de totale duur van de playlist
-        $totalDuration = $playlist->songs->sum('duration'); // De duur in minuten, veronderstel dat 'duration' een kolom is in de 'songs' tabel
+        $totalDuration = $playlist->songs->sum('duration'); // De duur in minuten
 
         // Haal nummers op die nog niet aan de playlist zijn toegevoegd
         $songs = Song::whereDoesntHave('playlists', function($query) use ($playlist) {
@@ -87,7 +87,7 @@ class PlaylistController extends Controller
     }
 
     /**
-     * Add a song to the playlist.
+     * Voeg het liedje toe als het nog niet in de playlist zit
      */
     public function addSong(Request $request, Playlist $playlist)
     {
@@ -96,7 +96,6 @@ class PlaylistController extends Controller
             'song_id' => 'required|exists:songs,id',
         ]);
 
-        // Voeg het liedje toe als het nog niet in de playlist zit
         if (!$playlist->songs()->where('song_id', $validated['song_id'])->exists()) {
             $playlist->songs()->attach($validated['song_id']);
             return redirect()->route('playlists.show', $playlist->id)->with('success', 'Song added to playlist!');
@@ -106,11 +105,10 @@ class PlaylistController extends Controller
     }
 
     /**
-     * Remove a song from the playlist.
+     * Verwijder het liedje uit de playlist
      */
     public function removeSong(Playlist $playlist, $songId)
     {
-        // Verwijder het liedje uit de playlist
         if ($playlist->songs()->detach($songId)) {
             return redirect()->route('playlists.show', $playlist->id)->with('success', 'Song removed from playlist!');
         }

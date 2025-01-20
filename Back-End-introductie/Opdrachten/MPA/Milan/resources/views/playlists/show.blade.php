@@ -5,11 +5,17 @@
 
     <h2>Huidige nummers</h2>
     @foreach($playlist->songs as $song)
-        <p>
-            <a href="{{ route('songs.show', $song->id) }}">
-                <strong>{{ $song->name }}</strong> - {{ $song->artist }}
-            </a>
-        </p>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <a href="{{ route('songs.show', $song->id) }}">
+            <strong>{{ $song->name }}</strong> - {{ $song->artist }}
+        </a>
+        <!-- Verwijderknop -->
+        <form action="{{ route('playlists.songs.destroy', ['playlist' => $playlist->id, 'song' => $song->id]) }}" method="POST" style="margin: 0;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm">Verwijder</button>
+        </form>
+    </div>
     @endforeach
 
     @php

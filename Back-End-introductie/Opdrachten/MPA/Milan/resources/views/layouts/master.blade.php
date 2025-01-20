@@ -17,6 +17,7 @@
         <li><a href="{{ url('/playlists') }}" class="{{ request()->is('playlists*') ? 'active' : '' }}">Playlists</a></li>
         
         @guest
+            <li><a href="{{ route('temporary-playlist.create') }}" class="{{ request()->is('temporary-playlist/create') ? 'active' : '' }}">Maak tijdelijke playlist</a></li>
             <li><a href="{{ url('/register') }}" class="{{ request()->is('register') ? 'active' : '' }}">Registreren</a></li>
             <li><a href="{{ url('/login') }}" class="{{ request()->is('login') ? 'active' : '' }}">Inloggen</a></li>
         @endguest
@@ -48,6 +49,6 @@
 
 @stack('scripts')
 
-<footer>&copy; Milan Sebes - 2024</footer>
+<footer>&copy; Milan Sebes - 2025</footer>
 </body>
 </html>

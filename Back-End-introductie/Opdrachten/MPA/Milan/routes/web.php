@@ -7,6 +7,7 @@ use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,13 +32,25 @@ Route::get('/playlists/create', [PlaylistController::class, 'create'])->name('pl
 Route::post('/playlists', [PlaylistController::class, 'store'])->name('playlists.store');
 Route::get('/playlists/{id}', [PlaylistController::class, 'show'])->name('playlists.show');
 Route::post('/playlists/{playlist}/add-song', [PlaylistController::class, 'addSong'])->name('playlists.addSong');
+Route::delete('/playlists/{playlist}/songs/{song}', [PlaylistController::class, 'removeSong'])->name('playlists.songs.destroy');
 
 // Login Routes
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/login', [LoginController::class, 'login']);
 
+// Register routes
 Route::get('/register', [RegisterController::class, 'create'])->name('register.create');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+
+// Temporary Playlist Routes
+Route::get('/temporary-playlist', [SessionController::class, 'create'])->name('temporary-playlist.create');
+Route::post('/temporary-playlist', [SessionController::class, 'store'])->name('temporary-playlist.store');
+Route::get('/temporary-playlist/show', [SessionController::class, 'show'])->name('temporary-playlist.show');
+Route::delete('/temporary-playlist', [SessionController::class, 'clear'])->name('temporary-playlist.clear');
+Route::post('/temporary-playlist/add-song', [SessionController::class, 'addSong'])->name('temporary-playlist.add-song');
+Route::delete('/temporary-playlist/remove-song/{songId}', [SessionController::class, 'removeSong'])->name('temporary-playlist.remove-song');
+Route::post('/temporary-playlist/save', [SessionController::class, 'save'])->name('temporary-playlist.save');

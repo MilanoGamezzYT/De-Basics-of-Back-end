@@ -44,9 +44,9 @@ class SongController extends Controller
 
         // Maak een nieuw liedje aan in de database
         Song::create([
-            'name' => $validated['name'],  // Gebruik de juiste veldnaam
+            'name' => $validated['name'], 
             'artist' => $validated['artist'],
-            'album' => $validated['album'] ?? null,  // Optioneel veld voor album
+            'album' => $validated['album'] ?? null,
             'duration' => $validated['duration'],  // Duur in seconden
             'genre_id' => $validated['genre_id'],  // Genre-id
         ]);
