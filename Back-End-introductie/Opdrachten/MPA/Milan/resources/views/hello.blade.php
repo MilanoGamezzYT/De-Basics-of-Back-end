@@ -19,9 +19,9 @@
     </div>
 
     <div class="box">
-        <img src="/images/playlists.png" alt="Playlist" width="250" height="400">
+        <img src="/images/playlist.png" alt="Playlist" width="250" height="400">
         <h3>Playlist</h3>
-        <p>Beheer je tijdelijke playlist en geniet van jouw selectie.</p>
+        <p>Beheer je playlists en geniet van jouw selectie.</p>
     </div>
 
     <div class="box">
@@ -31,9 +31,9 @@
     </div>
 
     <div class="box">
-        <img src="/images/saved-playlists.png" alt="Opgeslagen Playlist" width="250" height="400">
-        <h3>Opgeslagen Playlists</h3>
-        <p>Bekijk en beheer je opgeslagen playlists voor de ultieme ervaring.</p>
+        <img src="/images/musicplayer.png" alt="Opgeslagen Playlist" width="250" height="400">
+        <h3>Tijdelijke Playlists</h3>
+        <p>Bekijk en beheer je tijdelijke playlists voor de ultieme ervaring.</p>
     </div>
 
     <div class="box">
