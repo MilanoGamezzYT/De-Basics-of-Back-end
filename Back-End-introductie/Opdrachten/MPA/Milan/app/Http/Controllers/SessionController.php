@@ -100,7 +100,7 @@ class SessionController extends Controller
     public function clear()
     {
         session()->forget('temporary_playlist');
-        return redirect()->route('playlists.index')->with('success', 'De tijdelijke playlist is verwijderd.');
+        return redirect()->route('playlists.index');
     }
 
     /**
@@ -157,9 +157,9 @@ class SessionController extends Controller
         $playlist->user_id = auth()->id(); // De ID van de ingelogde gebruiker
         $playlist->save(); // Sla de playlist op in de database
 
-        // Voeg de nummers toe aan de playlist (relatie via de tussenliggende tabel)
+        // Voeg de nummers toe aan de playlist
         foreach ($temporaryPlaylist['songs'] as $songId) {
-            $playlist->songs()->attach($songId); // Voeg de nummers toe aan de playlist
+            $playlist->songs()->attach($songId);
         }
 
         // Verwijder de tijdelijke playlist uit de sessie

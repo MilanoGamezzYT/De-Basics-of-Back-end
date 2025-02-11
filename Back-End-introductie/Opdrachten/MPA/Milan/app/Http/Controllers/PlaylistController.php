@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Playlist;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PlaylistController extends Controller
 {
@@ -31,9 +33,12 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        // Valideer en maak een nieuwe playlist
-        $playlist = Playlist::create($this->validateRequest($request));
+        $result = $this->validateRequest($request);
 
+        // Valideer en maak een nieuwe playlist
+        $playlist = Playlist::create([
+            "name" =>$request->get("name"), 
+        ]);
         return redirect()->route('playlists.index')->with('success', 'Playlist successfully created!');
     }
 
@@ -64,16 +69,17 @@ class PlaylistController extends Controller
         return view('playlists.edit', compact('playlist'));
     }
 
-    /**
-     * Update the specified playlist in storage.
-     */
     public function update(Request $request, Playlist $playlist)
     {
-        // Update de playlist
-        $playlist->update($this->validateRequest($request));
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
 
-        return redirect()->route('playlists.index')->with('success', 'Playlist successfully updated!');
+        $playlist->update(['name' => $request->name]);
+
+        return redirect()->route('playlists.index')->with('success', 'Playlist naam bijgewerkt!');
     }
+
 
     /**
      * Remove the specified playlist from storage.
@@ -123,7 +129,6 @@ class PlaylistController extends Controller
     {
         return $request->validate([
             'name' => 'required|string|min:2|max:255',
-            'description' => 'nullable|string|max:500',
         ]);
     }
 }

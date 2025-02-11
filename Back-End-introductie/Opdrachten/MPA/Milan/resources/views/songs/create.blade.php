@@ -12,10 +12,6 @@
         <input type="text" id="artist" name="artist" required>
     </div>
     <div>
-        <label for="album">Album:</label>
-        <input type="text" id="album" name="album">
-    </div>
-    <div>
         <label for="duration">Length (in seconds):</label>
         <input type="number" id="duration" name="duration" required>
     </div>

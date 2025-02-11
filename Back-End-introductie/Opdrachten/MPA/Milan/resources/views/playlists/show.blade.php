@@ -3,6 +3,9 @@
 @section('content')
     <h1>Details van playlist: {{ $playlist->name }}</h1>
 
+    <!-- Knop om de playlistnaam te bewerken -->
+    <a href="{{ route('playlists.edit', $playlist->id) }}" class="btn btn-primary">Edit Playlist Name</a>
+
     <h2>Huidige nummers</h2>
     @foreach($playlist->songs as $song)
     <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
@@ -20,11 +23,11 @@
 
     @php
         // Omrekeningen van seconden naar minuten en seconden
-        $totalMinutes = floor($totalDuration / 60); // Aantal volledige minuten
-        $totalSeconds = $totalDuration % 60; // Rest van de seconden
+        $totalMinutes = floor($totalDuration / 60);
+        $totalSeconds = $totalDuration % 60;
     @endphp
 
-    <h3>Totale duur: {{ $totalMinutes }} minuten en {{ $totalSeconds }} seconden</h3> <!-- Toont de totale duur -->
+    <h3>Totale duur: {{ $totalMinutes }} minuten en {{ $totalSeconds }} seconden</h3>
 
     <h2>Voeg een nummer toe aan deze playlist</h2>
     <form action="{{ route('playlists.addSong', $playlist->id) }}" method="POST">

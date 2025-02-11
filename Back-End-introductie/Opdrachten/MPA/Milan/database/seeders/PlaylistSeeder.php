@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Factories\PlaylistFactory;
+use App\Models\Playlist;
 
 class PlaylistSeeder extends Seeder
 {
@@ -13,6 +12,6 @@ class PlaylistSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Playlist::factory(5)->create();
     }
 }

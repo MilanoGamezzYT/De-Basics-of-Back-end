@@ -2,11 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Playlist;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Playlist>
- */
 class PlaylistFactory extends Factory
 {
     /**
@@ -17,7 +15,8 @@ class PlaylistFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->word(), // Voorbeeld van een naam, bijv. 'Rock' of 'Chill'
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id, // Kies een willekeurige gebruiker
         ];
     }
 }

@@ -52,11 +52,12 @@ class GenresController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Genre $genre)
+    public function show($id)
     {
-        // Toon de details van een specifiek genre
+        $genre = Genre::with('songs')->findOrFail($id);
         return view('genres.show', compact('genre'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

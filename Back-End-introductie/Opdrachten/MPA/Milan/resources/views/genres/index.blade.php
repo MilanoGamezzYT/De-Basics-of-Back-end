@@ -9,7 +9,9 @@
     <p>Er zijn geen genres beschikbaar.</p>
 @else
     @foreach($genres as $genre)
-        <p>{{ $genre->name }}</p>
+    <p>
+        <a href="{{ route('genre.show', $genre->id) }}">{{ $genre->name }}</a>
+    </p>
     @endforeach
 @endif
 

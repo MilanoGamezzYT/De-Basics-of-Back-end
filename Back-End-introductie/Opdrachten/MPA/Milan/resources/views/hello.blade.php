@@ -20,7 +20,7 @@
 
     <div class="box">
         <img src="/images/playlist.png" alt="Playlist" width="250" height="400">
-        <h3>Playlist</h3>
+        <h3>Playlists</h3>
         <p>Beheer je playlists en geniet van jouw selectie.</p>
     </div>
 
