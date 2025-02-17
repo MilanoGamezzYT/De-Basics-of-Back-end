@@ -9,5 +9,6 @@
     <input type="text" id="name" name="name" required>
 
     <button type="submit">Opslaan</button>
+    
 </form>
 @endsection

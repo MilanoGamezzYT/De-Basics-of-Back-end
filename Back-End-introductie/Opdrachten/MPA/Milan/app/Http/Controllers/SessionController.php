@@ -154,7 +154,6 @@ class SessionController extends Controller
         // Maak een nieuwe playlist voor de ingelogde gebruiker
         $playlist = new Playlist();
         $playlist->name = $temporaryPlaylist['name'];
-        $playlist->user_id = auth()->id(); // De ID van de ingelogde gebruiker
         $playlist->save(); // Sla de playlist op in de database
 
         // Voeg de nummers toe aan de playlist

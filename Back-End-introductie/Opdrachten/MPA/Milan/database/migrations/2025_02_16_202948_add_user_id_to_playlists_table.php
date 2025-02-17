@@ -4,20 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
     public function up()
     {
         Schema::table('playlists', function (Blueprint $table) {
-            $table->dropForeign(['user_id']); // Verwijder de foreign key
-            $table->dropColumn('user_id'); // Verwijder de kolom
+            $table->unsignedBigInteger('user_id')->nullable();
         });
     }
 
     public function down()
     {
         Schema::table('playlists', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Voeg 'user_id' terug als je de migratie terugdraait
+            $table->dropColumn('user_id');
         });
     }
 };
-
