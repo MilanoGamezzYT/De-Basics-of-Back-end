@@ -14,10 +14,12 @@ class PlaylistController extends Controller
      */
     public function index()
     {
-        // Haal alle playlists op met het aantal liedjes
-        $playlists = Playlist::withCount('songs')->get();
+        // Haal alleen de playlists op van de ingelogde gebruiker
+        $playlists = Playlist::where('user_id', Auth::id())->get();
+
         return view('playlists.index', compact('playlists'));
     }
+
 
     /**
      * Show the form for creating a new playlist.
